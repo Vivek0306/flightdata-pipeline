@@ -1,0 +1,6 @@
+gcp-creds.json
+.env
+__pycache__/
+terraform.tfvars
+venv
+terraform/terraform.tfvars
