@@ -4,3 +4,8 @@ __pycache__/
 terraform.tfvars
 venv
 terraform/terraform.tfvars
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+ingestion/__pycache__/
+ingestion/test.py
