@@ -4,8 +4,38 @@ __pycache__/
 terraform.tfvars
 venv
 terraform/terraform.tfvars
+terraform/.terraform/*
 terraform/.terraform/
+
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 ingestion/__pycache__/
 ingestion/test.py
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Crash log files
+crash.log
+
+# You can also add other general files to ignore, like:
+# OS and Editor files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+.idea/
+.vscode/
