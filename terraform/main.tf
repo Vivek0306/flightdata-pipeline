@@ -36,28 +36,3 @@ resource "google_bigquery_dataset" "marts" {
   dataset_id = "flight_marts"
   location   = var.region
 }
-
-
-resource "google_bigquery_table" "raw_flights" {
-  dataset_id          = google_bigquery_dataset.staging.dataset_id
-  table_id            = "raw_flights"
-  deletion_protection = false
-
-  schema = jsonencode([
-    { name = "icao24",          type = "STRING" },
-    { name = "callsign",        type = "STRING" },
-    { name = "origin_country",  type = "STRING" },
-    { name = "time_position",   type = "FLOAT"  },
-    { name = "last_contact",    type = "FLOAT"  },
-    { name = "longitude",       type = "FLOAT"  },
-    { name = "latitude",        type = "FLOAT"  },
-    { name = "baro_altitude",   type = "FLOAT"  },
-    { name = "on_ground",       type = "BOOLEAN"},
-    { name = "velocity",        type = "FLOAT"  },
-    { name = "true_track",      type = "FLOAT"  },
-    { name = "vertical_rate",   type = "FLOAT"  },
-    { name = "geo_altitude",    type = "FLOAT"  },
-    { name = "squawk",          type = "STRING" },
-    { name = "ingested_at",     type = "TIMESTAMP" }
-  ])
-}

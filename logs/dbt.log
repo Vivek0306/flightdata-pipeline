@@ -1,0 +1,31 @@
+[0m00:26:19.065678 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x726b45aff7a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x726b45943fe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x726b43add970>]}
+
+
+============================== 00:26:19.068441 | 52c7305c-89ad-42be-a83e-ede8315431fb ==============================
+[0m00:26:19.068441 [info ] [MainThread]: Running with dbt=1.11.6
+[0m00:26:19.068928 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'warn_error': 'None', 'no_print': 'None', 'profiles_dir': '/home/vivek/.dbt', 'fail_fast': 'False', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt init dbt', 'log_cache_events': 'False', 'introspect': 'True', 'printer_width': '80', 'cache_selected_only': 'False', 'log_format': 'default', 'indirect_selection': 'eager', 'empty': 'None', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'log_path': 'logs', 'partial_parse': 'True', 'quiet': 'False', 'use_colors': 'True', 'static_parser': 'True'}
+[0m00:26:19.076129 [info ] [MainThread]: Creating dbt configuration folder at /home/vivek/.dbt
+[0m00:26:23.348636 [debug] [MainThread]: Starter project path: /home/vivek/Projects/fllight-pipeline/venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m00:26:23.351297 [info ] [MainThread]: 
+Your new dbt project "bigquery" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m00:26:23.351694 [info ] [MainThread]: Setting up your profile.
+[0m00:27:56.241206 [info ] [MainThread]: Profile bigquery written to /home/vivek/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m00:27:56.243512 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 97.22608, "process_in_blocks": "0", "process_kernel_time": 2.27221, "process_mem_max_rss": "368836", "process_out_blocks": "80", "process_user_time": 6.416757}
+[0m00:27:56.245946 [debug] [MainThread]: Command `dbt init` succeeded at 00:27:56.245537 after 97.23 seconds
+[0m00:27:56.247073 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x726b43b89eb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x726b02939850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x726b034c6c30>]}
+[0m00:27:56.248411 [debug] [MainThread]: Flushing usage events
+[0m00:27:57.195142 [debug] [MainThread]: An error was encountered while trying to flush usage events

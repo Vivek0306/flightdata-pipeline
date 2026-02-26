@@ -1,6 +1,8 @@
-INDIA_BBOX = (6.0, 37.0, 68.0, 97.0)
-min_lat, max_lat, min_lon, max_lon = INDIA_BBOX
-print(
-        f"https://opensky-network.org/api/states/all"
-        f"?lamin={min_lat}&lamax={max_lat}&lomin={min_lon}&lomax={max_lon}"
-    )
+a = [
+      "89916c",
+      "CAL073  ",
+      "Taiwan",
+      1772138472, 1772138472, 79.4676, 27.7534, 11582.4, 'false', 219.46, 288.73, 0, 'null', 12070.08, "0447",
+      'false', 0]
+
+print(len(a))
