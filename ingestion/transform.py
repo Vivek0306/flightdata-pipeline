@@ -106,25 +106,42 @@ ORDER BY total_flights DESC
 # daily summary — accumulates over time as pipeline runs daily
 # answers: how does flight traffic over India trend day over day?
 AGG_DAILY = f"""
-CREATE OR REPLACE TABLE `{PROJECT_ID}.flight_marts.agg_flights_daily` AS
+MERGE `{PROJECT_ID}.flight_marts.agg_flights_daily` AS target
+USING (
+    SELECT
+        DATE(ingested_at)                      AS flight_date,
+        COUNT(*)                               AS total_flights,
+        COUNT(DISTINCT icao24)                 AS unique_aircraft,
+        COUNT(DISTINCT origin_country)         AS countries_represented,
+        COUNTIF(on_ground = FALSE)             AS flights_airborne,
+        COUNTIF(on_ground = TRUE)              AS flights_on_ground,
+        COUNTIF(flight_type = 'Domestic')      AS domestic_flights,
+        COUNTIF(flight_type = 'International') AS international_flights,
+        ROUND(AVG(speed_kmh), 2)               AS avg_speed_kmh,
+        ROUND(AVG(altitude_feet), 2)           AS avg_altitude_feet
+    FROM `{PROJECT_ID}.flight_marts.fct_flights`
+    WHERE ingested_at IS NOT NULL
+    GROUP BY flight_date
+) AS source
+ON target.flight_date = source.flight_date
 
-SELECT
-    DATE(ingested_at)                   AS flight_date,
-    COUNT(*)                            AS total_flights,
-    COUNT(DISTINCT icao24)              AS unique_aircraft,
-    COUNT(DISTINCT origin_country)      AS countries_represented,
-    COUNTIF(on_ground = FALSE)          AS flights_airborne,
-    COUNTIF(on_ground = TRUE)           AS flights_on_ground,
-    COUNTIF(flight_type = 'Domestic')   AS domestic_flights,
-    COUNTIF(flight_type = 'International') AS international_flights,
-    ROUND(AVG(speed_kmh), 2)            AS avg_speed_kmh,
-    ROUND(AVG(altitude_feet), 2)        AS avg_altitude_feet
-FROM `{PROJECT_ID}.flight_marts.fct_flights`
-WHERE ingested_at IS NOT NULL
-GROUP BY flight_date
-ORDER BY flight_date DESC
+-- if we already have today's summary, update it with latest numbers
+WHEN MATCHED THEN
+    UPDATE SET
+        total_flights          = source.total_flights,
+        unique_aircraft        = source.unique_aircraft,
+        countries_represented  = source.countries_represented,
+        flights_airborne       = source.flights_airborne,
+        flights_on_ground      = source.flights_on_ground,
+        domestic_flights       = source.domestic_flights,
+        international_flights  = source.international_flights,
+        avg_speed_kmh          = source.avg_speed_kmh,
+        avg_altitude_feet      = source.avg_altitude_feet
+
+-- if this is a new day, insert it
+WHEN NOT MATCHED THEN
+    INSERT ROW
 """
-
 
 # ── Main ─────────────────────────────────────────────────
 def main():
