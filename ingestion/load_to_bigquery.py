@@ -79,8 +79,6 @@ def load_to_bigquery():
                 squawk              = source.squawk,
                 flight_phase        = source.flight_phase,
                 flight_category     = source.flight_category,
-                flight_type         = source.flight_type,
-                speed_category      = source.speed_category,
                 ingested_at         = source.ingested_at
 
         WHEN NOT MATCHED THEN
