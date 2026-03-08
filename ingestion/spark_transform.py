@@ -66,6 +66,8 @@ def read_raw_files(spark):
     try:
         df_json = spark.read.option("multiline", "true").json(INPUT_PATH)
         print(f"\nSuccessfully read from GCS!")
+        df_json = df_json.dropDuplicates(["time"])
+        print(f"Unique snapshots after dedup: {df_json.count()}")
         return df_json
     except Exception as e:
         print(f"\nUnable to read from GCS! Error occured: {e}")
