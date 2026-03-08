@@ -1,0 +1,23 @@
+[2026-03-08T15:59:15.152+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_pipeline.load_to_bigquery manual__2026-03-08T15:58:50.022395+00:00 [queued]>
+[2026-03-08T15:59:15.168+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_pipeline.load_to_bigquery manual__2026-03-08T15:58:50.022395+00:00 [queued]>
+[2026-03-08T15:59:15.168+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-08T15:59:15.199+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_to_bigquery> on 2026-03-08 15:58:50.022395+00:00
+[2026-03-08T15:59:15.214+0000] {standard_task_runner.py:60} INFO - Started process 2556 to run task
+[2026-03-08T15:59:15.220+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'flight_pipeline', 'load_to_bigquery', 'manual__2026-03-08T15:58:50.022395+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/flight_pipeline.py', '--cfg-path', '/tmp/tmphlksmzn3']
+[2026-03-08T15:59:15.224+0000] {standard_task_runner.py:88} INFO - Job 15: Subtask load_to_bigquery
+[2026-03-08T15:59:15.298+0000] {task_command.py:423} INFO - Running <TaskInstance: flight_pipeline.load_to_bigquery manual__2026-03-08T15:58:50.022395+00:00 [running]> on host 45fb248f2902
+[2026-03-08T15:59:15.431+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='vivek' AIRFLOW_CTX_DAG_ID='flight_pipeline' AIRFLOW_CTX_TASK_ID='load_to_bigquery' AIRFLOW_CTX_EXECUTION_DATE='2026-03-08T15:58:50.022395+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-08T15:58:50.022395+00:00'
+[2026-03-08T15:59:15.433+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-03-08T15:59:15.434+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/ingestion && python load_to_bigquery.py']
+[2026-03-08T15:59:15.465+0000] {subprocess.py:86} INFO - Output:
+[2026-03-08T15:59:23.436+0000] {subprocess.py:93} INFO - Loading Parquet into temp staging table: flight-pipeline-487919.flight_staging.raw_flights_staging
+[2026-03-08T15:59:23.437+0000] {subprocess.py:93} INFO - Temp staging table loaded successfully
+[2026-03-08T15:59:23.438+0000] {subprocess.py:93} INFO - Merging into flight-pipeline-487919.flight_staging.raw_flights with deduplication...
+[2026-03-08T15:59:23.438+0000] {subprocess.py:93} INFO - Merge complete!
+[2026-03-08T15:59:23.438+0000] {subprocess.py:93} INFO - Temp staging table dropped
+[2026-03-08T15:59:23.439+0000] {subprocess.py:93} INFO - Total rows in flight-pipeline-487919.flight_staging.raw_flights: 1122
+[2026-03-08T15:59:23.439+0000] {subprocess.py:93} INFO - Done!
+[2026-03-08T15:59:23.790+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-03-08T15:59:23.850+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=flight_pipeline, task_id=load_to_bigquery, execution_date=20260308T155850, start_date=20260308T155915, end_date=20260308T155923
+[2026-03-08T15:59:23.899+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-03-08T15:59:23.935+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

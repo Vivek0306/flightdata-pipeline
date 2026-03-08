@@ -16,7 +16,7 @@ with DAG(
     dag_id="flight_pipeline",                     # unique name shown in UI
     default_args=default_args,
     description="End to end flight data pipeline for India",
-    schedule_interval="0 6 * * *",               # runs every day at 6AM IST
+    schedule_interval="0 6 * * *",          # runs every 2 minutes
     start_date=datetime(2026, 3, 7),
     catchup=False,                                # don't backfill missed runs
     tags=["flights", "gcp", "pyspark"],

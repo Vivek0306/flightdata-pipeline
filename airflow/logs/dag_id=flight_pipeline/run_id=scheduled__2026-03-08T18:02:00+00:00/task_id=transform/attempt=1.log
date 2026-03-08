@@ -1,0 +1,26 @@
+[2026-03-08T18:04:31.400+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_pipeline.transform scheduled__2026-03-08T18:02:00+00:00 [queued]>
+[2026-03-08T18:04:31.406+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_pipeline.transform scheduled__2026-03-08T18:02:00+00:00 [queued]>
+[2026-03-08T18:04:31.406+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-08T18:04:31.414+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): transform> on 2026-03-08 18:02:00+00:00
+[2026-03-08T18:04:31.421+0000] {standard_task_runner.py:60} INFO - Started process 68959 to run task
+[2026-03-08T18:04:31.423+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'flight_pipeline', 'transform', 'scheduled__2026-03-08T18:02:00+00:00', '--job-id', '252', '--raw', '--subdir', 'DAGS_FOLDER/flight_pipeline.py', '--cfg-path', '/tmp/tmpv8_nxbgq']
+[2026-03-08T18:04:31.424+0000] {standard_task_runner.py:88} INFO - Job 252: Subtask transform
+[2026-03-08T18:04:31.457+0000] {task_command.py:423} INFO - Running <TaskInstance: flight_pipeline.transform scheduled__2026-03-08T18:02:00+00:00 [running]> on host 45fb248f2902
+[2026-03-08T18:04:31.512+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='vivek' AIRFLOW_CTX_DAG_ID='flight_pipeline' AIRFLOW_CTX_TASK_ID='transform' AIRFLOW_CTX_EXECUTION_DATE='2026-03-08T18:02:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-08T18:02:00+00:00'
+[2026-03-08T18:04:31.513+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-03-08T18:04:31.513+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/ingestion && python transform.py']
+[2026-03-08T18:04:31.526+0000] {subprocess.py:86} INFO - Output:
+[2026-03-08T18:04:39.583+0000] {subprocess.py:93} INFO - Running: fct_flights...
+[2026-03-08T18:04:39.583+0000] {subprocess.py:93} INFO - Done: fct_flights
+[2026-03-08T18:04:39.583+0000] {subprocess.py:93} INFO - Running: dim_countries...
+[2026-03-08T18:04:39.583+0000] {subprocess.py:93} INFO - Done: dim_countries
+[2026-03-08T18:04:39.584+0000] {subprocess.py:93} INFO - Running: dim_flight_phases...
+[2026-03-08T18:04:39.584+0000] {subprocess.py:93} INFO - Done: dim_flight_phases
+[2026-03-08T18:04:39.584+0000] {subprocess.py:93} INFO - Running: agg_flights_daily...
+[2026-03-08T18:04:39.584+0000] {subprocess.py:93} INFO - Done: agg_flights_daily
+[2026-03-08T18:04:39.584+0000] {subprocess.py:93} INFO - 
+[2026-03-08T18:04:39.584+0000] {subprocess.py:93} INFO - All transformations complete!
+[2026-03-08T18:04:39.683+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-03-08T18:04:39.712+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=flight_pipeline, task_id=transform, execution_date=20260308T180200, start_date=20260308T180431, end_date=20260308T180439
+[2026-03-08T18:04:39.745+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-03-08T18:04:39.760+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

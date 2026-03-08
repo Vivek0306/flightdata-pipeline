@@ -1,0 +1,80 @@
+[2026-03-08T18:58:24.620+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_pipeline.fetch_flights scheduled__2026-03-08T18:56:00+00:00 [queued]>
+[2026-03-08T18:58:24.643+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_pipeline.fetch_flights scheduled__2026-03-08T18:56:00+00:00 [queued]>
+[2026-03-08T18:58:24.643+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-08T18:58:24.673+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): fetch_flights> on 2026-03-08 18:56:00+00:00
+[2026-03-08T18:58:24.691+0000] {standard_task_runner.py:60} INFO - Started process 78813 to run task
+[2026-03-08T18:58:24.701+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'flight_pipeline', 'fetch_flights', 'scheduled__2026-03-08T18:56:00+00:00', '--job-id', '287', '--raw', '--subdir', 'DAGS_FOLDER/flight_pipeline.py', '--cfg-path', '/tmp/tmpj1fc03xw']
+[2026-03-08T18:58:24.706+0000] {standard_task_runner.py:88} INFO - Job 287: Subtask fetch_flights
+[2026-03-08T18:58:24.823+0000] {task_command.py:423} INFO - Running <TaskInstance: flight_pipeline.fetch_flights scheduled__2026-03-08T18:56:00+00:00 [running]> on host 45fb248f2902
+[2026-03-08T18:58:25.045+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='vivek' AIRFLOW_CTX_DAG_ID='flight_pipeline' AIRFLOW_CTX_TASK_ID='fetch_flights' AIRFLOW_CTX_EXECUTION_DATE='2026-03-08T18:56:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-08T18:56:00+00:00'
+[2026-03-08T18:58:25.050+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-03-08T18:58:25.052+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/ingestion && python fetch_flights.py']
+[2026-03-08T18:58:25.098+0000] {subprocess.py:86} INFO - Output:
+[2026-03-08T18:58:25.627+0000] {subprocess.py:93} INFO - Fetching flights from OpenSky...
+[2026-03-08T18:58:25.633+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-03-08T18:58:25.634+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+[2026-03-08T18:58:25.634+0000] {subprocess.py:93} INFO -     conn = connection.create_connection(
+[2026-03-08T18:58:25.635+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 72, in create_connection
+[2026-03-08T18:58:25.635+0000] {subprocess.py:93} INFO -     for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+[2026-03-08T18:58:25.635+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/socket.py", line 918, in getaddrinfo
+[2026-03-08T18:58:25.635+0000] {subprocess.py:93} INFO -     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+[2026-03-08T18:58:25.636+0000] {subprocess.py:93} INFO - socket.gaierror: [Errno -3] Temporary failure in name resolution
+[2026-03-08T18:58:25.636+0000] {subprocess.py:93} INFO - 
+[2026-03-08T18:58:25.636+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2026-03-08T18:58:25.636+0000] {subprocess.py:93} INFO - 
+[2026-03-08T18:58:25.637+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-03-08T18:58:25.637+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+[2026-03-08T18:58:25.637+0000] {subprocess.py:93} INFO -     httplib_response = self._make_request(
+[2026-03-08T18:58:25.638+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+[2026-03-08T18:58:25.638+0000] {subprocess.py:93} INFO -     self._validate_conn(conn)
+[2026-03-08T18:58:25.638+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1058, in _validate_conn
+[2026-03-08T18:58:25.638+0000] {subprocess.py:93} INFO -     conn.connect()
+[2026-03-08T18:58:25.638+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connection.py", line 363, in connect
+[2026-03-08T18:58:25.639+0000] {subprocess.py:93} INFO -     self.sock = conn = self._new_conn()
+[2026-03-08T18:58:25.639+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connection.py", line 186, in _new_conn
+[2026-03-08T18:58:25.639+0000] {subprocess.py:93} INFO -     raise NewConnectionError(
+[2026-03-08T18:58:25.639+0000] {subprocess.py:93} INFO - urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7b1bd1c62580>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+[2026-03-08T18:58:25.640+0000] {subprocess.py:93} INFO - 
+[2026-03-08T18:58:25.640+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2026-03-08T18:58:25.640+0000] {subprocess.py:93} INFO - 
+[2026-03-08T18:58:25.640+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-03-08T18:58:25.640+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+[2026-03-08T18:58:25.641+0000] {subprocess.py:93} INFO -     resp = conn.urlopen(
+[2026-03-08T18:58:25.641+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+[2026-03-08T18:58:25.641+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2026-03-08T18:58:25.641+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+[2026-03-08T18:58:25.642+0000] {subprocess.py:93} INFO -     raise MaxRetryError(_pool, url, error or ResponseError(cause))
+[2026-03-08T18:58:25.642+0000] {subprocess.py:93} INFO - urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='opensky-network.org', port=443): Max retries exceeded with url: /api/states/all?lamin=6.0&lamax=37.0&lomin=68.0&lomax=97.0 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7b1bd1c62580>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+[2026-03-08T18:58:25.642+0000] {subprocess.py:93} INFO - 
+[2026-03-08T18:58:25.642+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2026-03-08T18:58:25.642+0000] {subprocess.py:93} INFO - 
+[2026-03-08T18:58:25.643+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-03-08T18:58:25.643+0000] {subprocess.py:93} INFO -   File "fetch_flights.py", line 78, in <module>
+[2026-03-08T18:58:25.643+0000] {subprocess.py:93} INFO -     main()
+[2026-03-08T18:58:25.643+0000] {subprocess.py:93} INFO -   File "fetch_flights.py", line 70, in main
+[2026-03-08T18:58:25.643+0000] {subprocess.py:93} INFO -     data = fetch_flights()
+[2026-03-08T18:58:25.644+0000] {subprocess.py:93} INFO -   File "fetch_flights.py", line 34, in fetch_flights
+[2026-03-08T18:58:25.644+0000] {subprocess.py:93} INFO -     response = requests.get(url, timeout=30)
+[2026-03-08T18:58:25.645+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/api.py", line 73, in get
+[2026-03-08T18:58:25.645+0000] {subprocess.py:93} INFO -     return request("get", url, params=params, **kwargs)
+[2026-03-08T18:58:25.645+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+[2026-03-08T18:58:25.645+0000] {subprocess.py:93} INFO -     return session.request(method=method, url=url, **kwargs)
+[2026-03-08T18:58:25.646+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+[2026-03-08T18:58:25.646+0000] {subprocess.py:93} INFO -     resp = self.send(prep, **send_kwargs)
+[2026-03-08T18:58:25.646+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+[2026-03-08T18:58:25.647+0000] {subprocess.py:93} INFO -     r = adapter.send(request, **kwargs)
+[2026-03-08T18:58:25.647+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/adapters.py", line 519, in send
+[2026-03-08T18:58:25.647+0000] {subprocess.py:93} INFO -     raise ConnectionError(e, request=request)
+[2026-03-08T18:58:25.647+0000] {subprocess.py:93} INFO - requests.exceptions.ConnectionError: HTTPSConnectionPool(host='opensky-network.org', port=443): Max retries exceeded with url: /api/states/all?lamin=6.0&lamax=37.0&lomin=68.0&lomax=97.0 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7b1bd1c62580>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+[2026-03-08T18:58:25.752+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-03-08T18:58:25.774+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-03-08T18:58:25.780+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=flight_pipeline, task_id=fetch_flights, execution_date=20260308T185600, start_date=20260308T185824, end_date=20260308T185825
+[2026-03-08T18:58:25.801+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 287 for task fetch_flights (Bash command failed. The command returned a non-zero exit code 1.; 78813)
+[2026-03-08T18:58:25.837+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-03-08T18:58:25.878+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
